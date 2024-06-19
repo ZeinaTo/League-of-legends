@@ -1,0 +1,12 @@
+<!-- <div>
+    <div class="row row-cols-2">
+        <app-champion *ngFor="let championVar of champions;let i=index" [champion]="championVar"></app-champion>
+    </div>
+</div> -->
+
+<ag-grid-angular
+    style="width: 100%;height: 100vh;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs">
+</ag-grid-angular>

@@ -1,0 +1,19 @@
+<form [formGroup]="addChamptionForm" (ngSubmit)="onSubmit()">
+    <label for="first-name">Name: </label>
+    <input id="first-name" type="text" formControlName="name" />
+  
+    <br />
+  
+    <label for="last-name">Title: </label>
+    <input id="last-name" type="text" formControlName="title" />
+  
+ 
+    <br />
+    <label for="last-name">Key: </label>
+    <input id="last-name" type="text" formControlName="key" />
+    <br />
+  
+
+    <button type="submit">Submit Profile</button>
+    
+  </form>
