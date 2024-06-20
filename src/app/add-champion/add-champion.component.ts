@@ -9,28 +9,31 @@ import { ChampionService } from '../champion.service';
   styleUrls: ['./add-champion.component.css']
 })
 export class AddChampionComponent {
-  constructor(private service:ChampionService){}
+  championAdded = false;
+
+  constructor(private service: ChampionService) {}
+
   addChamptionForm = new FormGroup({
     name: new FormControl("", [
       Validators.required,
       Validators.minLength(1)
     ]),
-    title: new FormControl("Title", [
-
-    ]),
-    key: new FormControl("Key", [
-
-    ]),
+    title: new FormControl("Title", []),
+    key: new FormControl("Key", [])
   });
 
   onSubmit() {
-    const champion:Champion= {
-      id:this.service.generateUniqueId(),
-      name:this.addChamptionForm.value.name as string,
+    const champion: Champion = {
+      id: this.service.generateUniqueId(),
+      name: this.addChamptionForm.value.name as string,
       title: this.addChamptionForm.value.title as string,
-      key:this.addChamptionForm.value.key as string
-    }
+      key: this.addChamptionForm.value.key as string
+    };
+
     console.log(champion);
-    this.service.addChampion(champion); 
+    this.service.addChampion(champion);
+    this.championAdded = true;
+
+    this.addChamptionForm.reset();
   }
 }

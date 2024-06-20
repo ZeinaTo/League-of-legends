@@ -28,9 +28,17 @@ export class ChampionListComponent implements OnInit{
     ];
   }    
   ngOnInit(): void {
+    //pour les donnees locales du champion service
       this.champions=this.service.getChampions();
       console.log(this.champions);
       this.rowData = this.service.getChampions();
+    // jusqu'ici
+
+    //pour les donnees de data.json
+    // this.service.fetchChampionsFromJson().subscribe(data => {
+    //   this.champions = data;
+    //   this.rowData = data;
+    // });
     }
 
     // deleteButtonRenderer(params: any) {

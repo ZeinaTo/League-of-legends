@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Champion } from './entities/Champion';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChampionService {
   champions:Champion[];
-  constructor(){
+  constructor(private http: HttpClient){
     this.champions=[ {
       id: 1,
       name: "Annie",
@@ -932,6 +935,8 @@ export class ChampionService {
       key: "Samira"
     },]
   }
+
+  //Pour la base de donnees de champion service
   getChampions(){
     return this.champions;
   }
@@ -946,4 +951,15 @@ export class ChampionService {
     // Use a type assertion to tell TypeScript that this.champions is not undefined
     return Math.max(...this.champions.map(c => c.id as number)) + 1;
   }
+
+  //pour importer les donnees du fichier json
+  // private jsonUrl = 'assets/data.json';
+  // getChampions(): Champion[] {
+  //   return this.champions;
+  // }
+
+  // fetchChampionsFromJson(): Observable<Champion[]> {
+  //   return this.http.get<Champion[]>(this.jsonUrl);
+  // }
+
 }
